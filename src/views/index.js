@@ -1,15 +1,19 @@
+import { ResourceStore } from "i18next";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import Home from "./Home";
-import Setting from "./Setting";
+import routes from "./nav";
 
 export default () => (
   <BrowserRouter>
     <React.Fragment>
       <Routes>
-        <Route exact path="/setting" element={<Setting />} />
-        <Route exact path="/" element={<Home />} />
+        {routes.map((route) => (
+          <Route
+            exact={route.exact}
+            path={route.path}
+            element={route.element}
+          />
+        ))}
       </Routes>
     </React.Fragment>
   </BrowserRouter>
